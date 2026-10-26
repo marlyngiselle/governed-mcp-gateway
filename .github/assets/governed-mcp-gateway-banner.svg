@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="t d">
+  <title id="t">Governed MCP Gateway</title>
+  <desc id="d">AI assistants on the left reach operations systems on the right only through a single governed gateway.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f4d"/>
+      <stop offset="1" stop-color="#2456c8"/>
+    </linearGradient>
+    <linearGradient id="gate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fa6ff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#7fa6ff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- Text block -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="64" y="128" fill="#ffffff" font-size="50" font-weight="700" letter-spacing="-0.5">Governed MCP Gateway</text>
+    <text x="64" y="170" fill="#c9d8ff" font-size="22">Give AI assistants safe, audited access to enterprise systems.</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#e6edff">
+    <rect x="64" y="200" width="70" height="28" rx="14" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="99" y="219" text-anchor="middle">policy</text>
+    <rect x="142" y="200" width="78" height="28" rx="14" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="181" y="219" text-anchor="middle">confirm</text>
+    <rect x="228" y="200" width="74" height="28" rx="14" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="265" y="219" text-anchor="middle">redact</text>
+    <rect x="310" y="200" width="104" height="28" rx="14" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="362" y="219" text-anchor="middle">rate limit</text>
+    <rect x="422" y="200" width="64" height="28" rx="14" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="454" y="219" text-anchor="middle">audit</text>
+    <rect x="494" y="200" width="56" height="28" rx="14" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="522" y="219" text-anchor="middle">OIDC</text>
+  </g>
+
+  <!-- Connectors: assistants to gateway -->
+  <g fill="none" stroke="#9fbcff" stroke-width="2" stroke-opacity="0.75">
+    <path d="M722 82 C790 82 800 150 862 150"/>
+    <path d="M722 150 H862"/>
+    <path d="M722 184 C790 184 800 150 862 150"/>
+    <path d="M722 218 C790 218 800 150 862 150"/>
+  </g>
+  <!-- Connectors: gateway to systems -->
+  <g fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.85">
+    <path d="M958 150 C990 150 990 86 1018 86"/>
+    <path d="M958 150 H1018"/>
+    <path d="M958 150 C990 150 990 214 1018 214"/>
+  </g>
+  <!-- One blocked call: stops at the gate -->
+  <path d="M722 116 C770 116 800 122 846 124" fill="none" stroke="#ffb4a8" stroke-width="2" stroke-dasharray="5 5" stroke-opacity="0.9"/>
+  <g stroke="#ffb4a8" stroke-width="2.5" stroke-linecap="round">
+    <path d="M846 118 L856 130"/>
+    <path d="M856 118 L846 130"/>
+  </g>
+
+  <!-- Assistants -->
+  <g fill="#0b1f4d" stroke="#c9d8ff" stroke-width="2">
+    <circle cx="708" cy="82" r="14"/>
+    <circle cx="708" cy="116" r="14" stroke="#ffb4a8"/>
+    <circle cx="708" cy="150" r="14"/>
+    <circle cx="708" cy="184" r="14"/>
+    <circle cx="708" cy="218" r="14"/>
+  </g>
+  <g fill="#c9d8ff">
+    <circle cx="708" cy="82" r="4"/>
+    <circle cx="708" cy="150" r="4"/>
+    <circle cx="708" cy="184" r="4"/>
+    <circle cx="708" cy="218" r="4"/>
+  </g>
+
+  <!-- Gateway -->
+  <circle cx="910" cy="150" r="110" fill="url(#glow)"/>
+  <rect x="862" y="62" width="96" height="176" rx="18" fill="url(#gate)" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2"/>
+  <path d="M910 104 L940 116 V146 C940 166 927 180 910 188 C893 180 880 166 880 146 V116 Z" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M897 146 L907 157 L925 135" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#ffffff" fill-opacity="0.55">
+    <rect x="880" y="204" width="60" height="4" rx="2"/>
+    <rect x="890" y="214" width="40" height="4" rx="2"/>
+  </g>
+
+  <!-- Systems -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#ffffff">
+    <rect x="1018" y="66" width="128" height="40" rx="10" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.6"/>
+    <text x="1082" y="91" text-anchor="middle">inventory</text>
+    <rect x="1018" y="130" width="128" height="40" rx="10" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.6"/>
+    <text x="1082" y="155" text-anchor="middle">runbooks</text>
+    <rect x="1018" y="194" width="128" height="40" rx="10" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.6"/>
+    <text x="1082" y="219" text-anchor="middle">tickets</text>
+  </g>
+</svg>
