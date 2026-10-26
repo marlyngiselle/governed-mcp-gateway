@@ -1,0 +1,48 @@
+# Local run of the three servers over Streamable HTTP.
+#
+#   governed-mcp dev-keys --out .dev        # once: local signing key + JWKS (git-ignored)
+#   docker compose up --build
+#   governed-mcp dev-token --role operator  # paste into your MCP client as a bearer token
+#
+# Each server verifies tokens against .dev/jwks.json, mounted read-only.
+
+x-governed: &governed
+  build: .
+  image: governed-mcp-gateway:local
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  tmpfs: ["/tmp"]
+  volumes:
+    - ./.dev/jwks.json:/run/keys/jwks.json:ro
+  environment: &governed-env
+    GOVERNED_MCP_ISSUER: https://idp.example.test
+    GOVERNED_MCP_AUDIENCE: governed-mcp
+    GOVERNED_MCP_JWKS_FILE: /run/keys/jwks.json
+    GOVERNED_MCP_ALLOWED_HOSTS: "localhost:*,127.0.0.1:*"
+  restart: unless-stopped
+
+services:
+  cloud-inventory:
+    <<: *governed
+    command: ["cloud-inventory", "--transport", "http"]
+    ports: ["127.0.0.1:8001:8000"]
+    environment:
+      <<: *governed-env
+      GOVERNED_MCP_RESOURCE_URL: http://localhost:8001/mcp
+
+  runbooks:
+    <<: *governed
+    command: ["runbooks", "--transport", "http"]
+    ports: ["127.0.0.1:8002:8000"]
+    environment:
+      <<: *governed-env
+      GOVERNED_MCP_RESOURCE_URL: http://localhost:8002/mcp
+
+  tickets:
+    <<: *governed
+    command: ["tickets", "--transport", "http"]
+    ports: ["127.0.0.1:8003:8000"]
+    environment:
+      <<: *governed-env
+      GOVERNED_MCP_RESOURCE_URL: http://localhost:8003/mcp
