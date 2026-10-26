@@ -1,0 +1,17 @@
+# Read-only assistant: answers questions about inventory, runbooks and tickets.
+# Cost data is commercially sensitive, so showback stays with operators and admins.
+role: reader
+description: Read-only access for assistants that answer operational questions.
+priority: 10
+allow_writes: false
+tools:
+  allow:
+    - "cloud-inventory.*"
+    - "runbooks.*"
+    - "tickets.search_tickets"
+    - "tickets.get_ticket"
+  deny:
+    - "cloud-inventory.cost_by_tag"
+rate_limit:
+  requests_per_minute: 30
+  burst: 10

@@ -1,0 +1,15 @@
+# On-call operator: everything a reader has, plus cost showback and opening tickets.
+# Writes still need confirm=true on every call.
+role: operator
+description: On-call operators who triage incidents and may open tickets after confirmation.
+priority: 50
+allow_writes: true
+tools:
+  allow:
+    - "cloud-inventory.*"
+    - "runbooks.*"
+    - "tickets.*"
+  deny: []
+rate_limit:
+  requests_per_minute: 60
+  burst: 20

@@ -1,0 +1,13 @@
+# Platform administrators: every tool on every server, with a higher rate limit.
+# The confirmation rule for write tools is enforced by the gateway, not by role.
+role: admin
+description: Platform administrators with access to every governed tool.
+priority: 100
+allow_writes: true
+tools:
+  allow:
+    - "*"
+  deny: []
+rate_limit:
+  requests_per_minute: 120
+  burst: 40
