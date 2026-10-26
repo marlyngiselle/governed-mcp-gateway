@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "governed-mcp-gateway"
+version = "0.1.0"
+description = "Governed MCP servers for operations tooling: role policies, write confirmation, redaction, rate limits, audit and OIDC."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Giselle Da Costa" }]
+requires-python = ">=3.11"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: System :: Systems Administration",
+  "Topic :: Security",
+]
+dependencies = [
+  "mcp>=2.3,<3",
+  "pydantic>=2.8,<3",
+  "pyyaml>=6.0,<7",
+  "pyjwt[crypto]>=2.9,<3",
+  "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.8",
+  "mypy>=1.13",
+  "types-PyYAML>=6.0",
+]
+
+[project.scripts]
+governed-mcp = "governed_mcp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/governed_mcp"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF", "PL", "ASYNC"]
+ignore = ["PLR0913", "PLR2004", "PLR0911"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S105", "S106", "PLR2004", "PLC0415"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+files = ["src", "tests", "examples"]
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = ["uvicorn.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+filterwarnings = ["error::DeprecationWarning:governed_mcp.*"]
